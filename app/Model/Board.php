@@ -1,17 +1,19 @@
 <?php
 
+
 class Board extends AppModel {
 
+	private $limit = 40;
 	public $validate = array(
 			'title' => array(
-					'title-rule1' => array(
-							'rule' => 'notEmpty',
-							'message' => 'タイトルを入力してください'
-					),
-					'title-rule2' => array(
-							'rule' => array('maxLength', 20),
-							'message' => '最大文字数は半角 %s 文字になっていてくれると嬉しいです。'
-					),
+				'title-rule1' => array(
+						'rule' => 'notEmpty',
+						'message' => 'タイトルを入力してください'
+				),
+				'title-rule2' => array(
+						'rule' => array('validation_max_width', $limit),
+						'message' => ''
+				)
 			),
 			'name' => array(
 				'name-rule1' => array(
@@ -21,7 +23,7 @@ class Board extends AppModel {
 				'name-rule2' => array(
 						'rule' => array('maxLength', 20),
 						'message' => '最大文字数は%s文字です。（全角半角問わず）'
-				),
+				)
 			),
 			'message' => array(
 				'message-rule1' => array(
@@ -34,4 +36,15 @@ class Board extends AppModel {
 				)
 			)
 	);
+
+	public static function validation_max_width($message,$limit)
+	{
+		debug($limit);
+		debug($message);
+
+		$mesage_value = mb_strwidth($message['title'],'UTF-8');
+
+		return $mesage_value <= $limit;
+	}
+
 }
