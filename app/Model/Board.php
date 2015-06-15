@@ -11,8 +11,8 @@ class Board extends AppModel {
 						'message' => 'タイトルを入力してください'
 				),
 				'title-rule2' => array(
-						'rule' => array('validation_max_width', $limit),
-						'message' => ''
+						'rule' => array('validation_max_width', 40),
+						'message' => '最大文字数は%s文字です。（半角）'
 				)
 			),
 			'name' => array(
@@ -39,8 +39,8 @@ class Board extends AppModel {
 
 	public static function validation_max_width($message,$limit)
 	{
-		debug($limit);
-		debug($message);
+// 		debug($limit);
+// 		debug($message);
 
 		$mesage_value = mb_strwidth($message['title'],'UTF-8');
 

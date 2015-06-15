@@ -1,4 +1,4 @@
-<h1>Bulletin board</h1>
+<h3>Bulletin board</h3>
 <ul>
 <div style="border-style: solid ; border-width: 1px; padding: 10px 5px 10px 20px; border-color: black;">
 
