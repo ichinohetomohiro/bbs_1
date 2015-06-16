@@ -11,6 +11,7 @@ echo $this->Form->input('message', array('rows'=>3,'required' => false));
 echo $this->Form->end('Save Post');
 
 ?>
+<?php echo $this->Session->flash(); ?>
 
 </div>
 
